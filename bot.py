@@ -12,7 +12,7 @@ stemmer = LancasterStemmer()
 # restore all of our data structures
 import pickle
 
-data = pickle.load( open( "training_data", "rb" ) )
+data = pickle.load( open( "data/training_data", "rb" ) )
 words = data['words']
 classes = data['classes']
 train_x = data['train_x']
@@ -30,7 +30,7 @@ net = tflearn.fully_connected(net, 8)
 net = tflearn.fully_connected(net, len(train_y[0]), activation='softmax')
 net = tflearn.regression(net)
 model = tflearn.DNN(net, tensorboard_dir='tflearn_logs')
-model.load('./model.tflearn')
+model.load('./data/model.tflearn')
 
 def clean_up_sentence(sentence):
     # tokenize the pattern
